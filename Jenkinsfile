@@ -16,8 +16,17 @@ pipeline {
       }
     }
     stage('hello3') {
-      steps {
-        sh 'echo \'hello3\''
+      parallel {
+        stage('hello3') {
+          steps {
+            sh 'echo \'hello3\''
+          }
+        }
+        stage('') {
+          steps {
+            echo 'hello'
+          }
+        }
       }
     }
   }
